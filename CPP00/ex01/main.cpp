@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 20:31:53 by msaidi            #+#    #+#             */
-/*   Updated: 2023/12/25 05:53:22 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/01/19 06:49:58 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int main()
 {
     Phonebook MyBook;
     std::string input;
+    MyBook.SetSize();
+    MyBook.SetIndex();
     while (1)
     {
-        
         MyBook.PbInit();
         std::cin >> input;
+        if (std::cin.eof() || input.empty())
+            return (0);
         if (!input.compare("ADD"))
-        {
             MyBook.ADD();
-            MyBook.SetSize();
-        }
         else if (!input.compare("SEARCH"))
-            std::cout << input<< std::endl;
+           MyBook.SEARCH();
         else if (!input.compare("EXIT"))
             exit(0);
         else

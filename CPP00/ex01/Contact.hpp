@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:42:46 by msaidi            #+#    #+#             */
-/*   Updated: 2023/12/23 23:20:26 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/01/12 10:31:39 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class Contact
 {
-	private:
 	std::string  FirstName;
 	std::string  LastName;
 	std::string  NickName;

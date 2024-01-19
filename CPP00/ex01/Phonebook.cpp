@@ -6,30 +6,58 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:17:29 by msaidi            #+#    #+#             */
-/*   Updated: 2023/12/25 05:52:59 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/01/19 06:56:29 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include "Contact.hpp"
 #include <cctype>
+#include <iomanip>
 #include <iostream>
 #include <ostream>
 #include <string>
 
 void	Phonebook::SetSize()
 {
-	Size++;
+	Size = 0;
+}
+void	Phonebook::IndexInc()
+{
+	if (Index == 8)
+		Index = 0;
+	else
+		Index++;
+}
+void	Phonebook::SizeInc()
+{
+	if (Size == 8)
+		Size = 8;
+	else
+		Size++;
 }
 int	Phonebook::GetSize()
 {
 	return Size;
 }
+void	Phonebook::SetIndex()
+{
+	Index = 0;
+}
+int	Phonebook::GetIndex()
+{
+	return Index;
+}
 
 bool CheckStr(std::string str)
 {
 	if (str.empty())
-		return false;
+		return true;
+	for (int i = 0; i < (int)str.length(); i++)
+	{
+		if (str[i] != ' ' || str[i] != '\t')
+			return false;
+	}
 	return true;
 }
 bool ft_isdigit(std::string str)
@@ -42,47 +70,47 @@ bool ft_isdigit(std::string str)
 	return true;
 }
 
-bool CheckSpc(std::string str)
-{	
-	for(int i=0; i < (int)str.length() ; i++)
-		if (str[i] != ' ' || str[i] != '\t')
-			return false;
-	return true;
+void Phonebook::PbInit()
+{
+	std::cout << std::setw(20)<< ">>PhoneBook<<" << std::endl;
+	std::cout << "Enter ADD, SEARCH or EXIT" << std::endl;
 }
-void FillContact(Contact BookContact)
+
+void Phonebook::ADD()
 {
 	std::string str;
 
+	SizeInc();
 	std::cin.ignore();
-	while (std::cin.good() && CheckSpc(str))
+	while (std::cin.good() && CheckStr(str))
 	{
 		std::cout << "First name : ";
 		std::getline(std::cin, str);
 	}
-	BookContact.SetFirstName(str);
+	BookContact[Index].SetFirstName(str);
 	str.clear();
-	while (std::cin.good() && CheckSpc(str))
+	while (std::cin.good() && CheckStr(str))
 	{
 		std::cout << "Last name : ";
 		std::getline(std::cin, str);
 	}
-	BookContact.SetLastName(str);
+	BookContact[Index].SetLastName(str);
 	str.clear();
-	while (std::cin.good() && CheckSpc(str))
+	while (std::cin.good() && CheckStr(str))
 	{
 		std::cout << "Nickname : ";
 		std::getline(std::cin, str);
 	}
-	BookContact.SetNickName(str);
+	BookContact[Index].SetNickName(str);
 	str.clear();
-	while (std::cin.good() && CheckSpc(str))
+	while (std::cin.good() && CheckStr(str))
 	{
 		std::cout << "Darkest secret : ";
 		std::getline(std::cin, str);
 	}
-	BookContact.SetDarkestSecret(str);
+	BookContact[Index].SetDarkestSecret(str);
 	str.clear();
-	while (std::cin.good() && CheckSpc(str))
+	while (std::cin.good() && CheckStr(str))
 	{
 		std::cout << "Number : ";
 		std::getline(std::cin, str);
@@ -92,19 +120,7 @@ void FillContact(Contact BookContact)
 			continue;
 		}
 	}
-	BookContact.SetNum(str);
+	BookContact[Index].SetNum(str);
 	str.clear();
-	
-}
-
-void Phonebook::PbInit()
-{
-	std::cout << "         >>PhoneBook<<" << std::endl;
-	std::cout << "Enter ADD, SEARCH or EXIT" << std::endl;
-}
-
-void Phonebook::ADD()
-{
-	Index = 0;
-	FillContact(BookContact[Index]);
+	IndexInc();
 }

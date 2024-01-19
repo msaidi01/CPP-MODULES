@@ -1,6 +1,6 @@
 NAME = Phonebook
 
-SRC	= main.cpp Contact.cpp Phonebook.cpp
+SRC	= main.cpp Contact.cpp Phonebook.cpp Search.cpp
 
 HEADERS = Contact.hpp Phonebook.hpp
 
