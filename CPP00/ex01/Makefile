@@ -17,7 +17,7 @@ OBJS = $(SRC:.cpp=.o)
 
 all	: $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) $(HEADERS)
 	$(CC) $(OBJS) -o $(NAME)
 
 clean :

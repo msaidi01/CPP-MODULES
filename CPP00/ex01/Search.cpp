@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 22:47:25 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/19 06:52:28 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/01/24 04:24:51 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ void	ShowTab()
 
 void ListContacts(Contact *BookContact, int size)
 {
-    int i = 1;
-    std::string str;
-
-	while (i <= size)
+    for (int i = 0; i < size; i++)
     {
         std::cout << "|" << std::setw(10)<< i;
         if (BookContact[i].GetFirstName().size() > 9)
@@ -58,43 +55,53 @@ void ListContacts(Contact *BookContact, int size)
         else
             std::cout << "|" << std::setw(10) << BookContact[i].GetNickName();
         std::cout << "|" << std::endl;
-        i++;
     }
     std::cout << "+-------------------------------------------+"<< std::endl;
 }
 
-void ShowMore(Contact *BookContact, int size)
+bool ShowMore(Contact *BookContact, int size)
 {
     std::string str;
     int in;
     std::cin.ignore();
     while (std::cin.good() && CheckSpc(str))
     {
-        std::cout << "Enter Index: ";
+        std::cout << "Enter Index or (.) to go back: ";
         std::getline(std::cin, str);
     }
-    in = atoi(str.c_str());
-    if (in <= size)
+    if (!str.compare("."))
+        return 0;
+    if(!str.compare("0")||!str.compare("1")||!str.compare("2")||!str.compare("3")||!str.compare("4")
+        ||!str.compare("5")||!str.compare("6")||!str.compare("7"))
     {
-        std::cout << "first name: " << BookContact[in].GetFirstName()<< std::endl;
-        std::cout << "last name: " << BookContact[in].GetLastName()<< std::endl;
-        std::cout << "nickname: " << BookContact[in].GetNickName()<< std::endl;
-        std::cout << "Number: " << BookContact[in].GetNum()<< std::endl;
-        std::cout << "Darkest secret: " << BookContact[in].GetDarkestSecret()<< std::endl;
+        in = atoi(str.c_str());
+        if (in < size)
+        {
+            std::cout << "first name: " << BookContact[in].GetFirstName()<< std::endl;
+            std::cout << "last name: " << BookContact[in].GetLastName()<< std::endl;
+            std::cout << "nickname: " << BookContact[in].GetNickName()<< std::endl;
+            std::cout << "Number: " << BookContact[in].GetNum()<< std::endl;
+            std::cout << "Darkest secret: " << BookContact[in].GetDarkestSecret()<< std::endl;
+        }
+        else {
+            std::cout << "Index not found"<<std::endl;
+        }
     }
-    else
-        std::cout << "Index not found." << std::endl;
+    else {
+        std::cout << "Index not found"<<std::endl;
+    }
+    return (1);
 }
 
 void Phonebook::SEARCH()
 {
-    int size = GetSize();
-        if (size == 0)
+    if (Size == 0)
     {
         std::cout << "Save at least 1 contact" << std::endl;
         return ;
     }
 	ShowTab();
-	ListContacts(BookContact, size);
-    ShowMore(BookContact, size);
+	ListContacts(BookContact, Size);
+    if (!ShowMore(BookContact, Size))
+        return;
 }

@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:17:29 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/19 06:56:29 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/01/22 03:59:34 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,12 @@ void	Phonebook::SetSize()
 }
 void	Phonebook::IndexInc()
 {
-	if (Index == 8)
-		Index = 0;
-	else
-		Index++;
+	this->Index = (this->Index + 1) % 8;
 }
 void	Phonebook::SizeInc()
 {
 	if (Size == 8)
-		Size = 8;
+		return ;
 	else
 		Size++;
 }
@@ -49,21 +46,23 @@ int	Phonebook::GetIndex()
 	return Index;
 }
 
-bool CheckStr(std::string str)
+
+bool is_spc(std::string s)
 {
-	if (str.empty())
-		return true;
-	for (int i = 0; i < (int)str.length(); i++)
+	for(int i = 0; i < (int)s.length(); i++)
 	{
-		if (str[i] != ' ' || str[i] != '\t')
-			return false;
+		if (s[i] != ' ' && s[i] != '\t')
+			return true;
 	}
-	return true;
+	return false;
 }
+
 bool ft_isdigit(std::string str)
 {
 	for (int i = 0; str[i]; i++)
 	{
+		if (str[i] == ' ' || str[i] == '\t')
+			i++;
 		if (!std::isdigit(str[i]))
 			return false;
 	}
@@ -79,41 +78,66 @@ void Phonebook::PbInit()
 void Phonebook::ADD()
 {
 	std::string str;
-
+	
 	SizeInc();
 	std::cin.ignore();
-	while (std::cin.good() && CheckStr(str))
+	while (std::cin.good() && str.empty())
 	{
 		std::cout << "First name : ";
 		std::getline(std::cin, str);
+		if (!is_spc(str))
+		{
+			str.clear();
+			continue;
+		}
 	}
 	BookContact[Index].SetFirstName(str);
 	str.clear();
-	while (std::cin.good() && CheckStr(str))
+	while (std::cin.good() && str.empty())
 	{
 		std::cout << "Last name : ";
 		std::getline(std::cin, str);
+		if (!is_spc(str))
+		{
+			str.clear();
+			continue;
+		}
 	}
 	BookContact[Index].SetLastName(str);
 	str.clear();
-	while (std::cin.good() && CheckStr(str))
+	while (std::cin.good() && str.empty())
 	{
 		std::cout << "Nickname : ";
 		std::getline(std::cin, str);
+		if (!is_spc(str))
+		{
+			str.clear();
+			continue;
+		}
 	}
 	BookContact[Index].SetNickName(str);
 	str.clear();
-	while (std::cin.good() && CheckStr(str))
+	while (std::cin.good() && str.empty())
 	{
 		std::cout << "Darkest secret : ";
 		std::getline(std::cin, str);
+		if (!is_spc(str))
+		{
+			str.clear();
+			continue;
+		}
 	}
 	BookContact[Index].SetDarkestSecret(str);
 	str.clear();
-	while (std::cin.good() && CheckStr(str))
+	while (std::cin.good() && str.empty())
 	{
 		std::cout << "Number : ";
 		std::getline(std::cin, str);
+		if (!is_spc(str))
+		{
+			str.clear();
+			continue;
+		}
 		if (!ft_isdigit(str))
 		{
 			str.clear();
