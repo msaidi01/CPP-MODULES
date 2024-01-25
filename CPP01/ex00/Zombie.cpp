@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 10:42:52 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/25 04:07:23 by msaidi           ###   ########.fr       */
+/*   Created: 2024/01/24 04:40:47 by msaidi            #+#    #+#             */
+/*   Updated: 2024/01/25 02:03:10 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
-#include "Contact.hpp"
-class Phonebook
+#include "Zombie.hpp"
+#include <iostream>
+
+void Zombie::announce(void)
 {
-	private:
-	Contact	BookContact[8];
-	int Size;
-	int	Index;
-	public:
-	void SetSize();
-	int GetSize();
-	void SetIndex();
-	void IndexInc();
-	void SizeInc();
-	int GetIndex();
-	void PbInit();
-	void ADD();     
-	void SEARCH();
-};
+    std::cout << name << ": BraiiiiiiinnnzzzZ..."<< std::endl;
+}
 
+Zombie::Zombie(std::string name)
+{
+    this->name = name;
+}
 
-#endif
+Zombie::~Zombie()
+{
+    std::cout << this->name << ": tehla f krk al batal" << std::endl;
+}

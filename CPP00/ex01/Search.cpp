@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 22:47:25 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/24 04:24:51 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/01/25 04:07:35 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ShowTab()
     std::cout <<"|" << std::setw(10) << "index" <<"|" << std::setw(10) << "first name" << "|" << std::setw(10)
     << "last name" <<"|" << std::setw(10) << "nickname" << "|" <<std::endl;
     std::cout << "+-------------------------------------------+"<< std::endl;
-    
+       
 }
 
 

@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 10:42:52 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/25 04:07:23 by msaidi           ###   ########.fr       */
+/*   Created: 2024/01/24 04:40:38 by msaidi            #+#    #+#             */
+/*   Updated: 2024/01/25 01:59:44 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
-#include "Contact.hpp"
-class Phonebook
+#include "Zombie.hpp"
+
+int main()
 {
-	private:
-	Contact	BookContact[8];
-	int Size;
-	int	Index;
-	public:
-	void SetSize();
-	int GetSize();
-	void SetIndex();
-	void IndexInc();
-	void SizeInc();
-	int GetIndex();
-	void PbInit();
-	void ADD();     
-	void SEARCH();
-};
-
-
-#endif
+    Zombie *malik = newZombie("malik");
+    malik->announce();
+    randomChump("halik");
+    delete malik;
+    return 0;
+}
