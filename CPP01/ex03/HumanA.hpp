@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 04:40:38 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/25 21:19:05 by msaidi           ###   ########.fr       */
+/*   Created: 2024/01/26 02:27:56 by msaidi            #+#    #+#             */
+/*   Updated: 2024/01/26 04:26:45 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <string>
+#include "Weapon.hpp"
 
-int main()
+class HumanA
 {
-    Zombie *malik = newZombie("malik");
-    malik->announce();
-    randomChump("halik");
-    delete malik;
-    return 0;
-}
+    private:
+    std::string name;
+    Weapon &A;
+    public:
+    HumanA(std::string name,Weapon &arm);
+    void attack();
+};

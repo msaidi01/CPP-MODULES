@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 04:40:38 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/25 21:19:05 by msaidi           ###   ########.fr       */
+/*   Created: 2024/01/28 14:51:37 by msaidi            #+#    #+#             */
+/*   Updated: 2024/01/28 17:46:02 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <string>
+#include "Harl.hpp"
 
 int main()
 {
-    Zombie *malik = newZombie("malik");
-    malik->announce();
-    randomChump("halik");
-    delete malik;
-    return 0;
+    Harl harl;
+    std::string level = "DEBUG";
+    
+    harl.complain(level);
 }

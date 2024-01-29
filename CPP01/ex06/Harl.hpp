@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 04:40:38 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/25 21:19:05 by msaidi           ###   ########.fr       */
+/*   Created: 2024/01/28 14:51:21 by msaidi            #+#    #+#             */
+/*   Updated: 2024/01/28 14:54:59 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HARL_HPP
+#define HARL_HPP
 
-int main()
-{
-    Zombie *malik = newZombie("malik");
-    malik->announce();
-    randomChump("halik");
-    delete malik;
-    return 0;
-}
+#include <string>
+
+class Harl {
+    private:
+    void debug( void );
+    void info( void );
+    void warning( void );
+    void error( void );
+    public:
+    void complain(std::string level);
+};
+
+#endif

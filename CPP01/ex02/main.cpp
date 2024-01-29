@@ -6,17 +6,25 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 04:40:38 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/25 21:19:05 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/01/26 00:17:00 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <string>
+#include <iostream>
 
 int main()
 {
-    Zombie *malik = newZombie("malik");
-    malik->announce();
-    randomChump("halik");
-    delete malik;
-    return 0;
+    std::string str = "HI THIS IS BRAIN";
+    std::string *stringPTR = &str;
+    std::string &stringREF = str;
+
+    std::cout << "address of str       ::> "<< str<<std::endl;
+    std::cout << "address of stringPTR ::> "<< stringPTR << std::endl;
+    std::cout << "address of stringREF ::> "<< &stringREF << std::endl;
+    std::cout << "-----------------" << std::endl;
+    std::cout << "value of str       ::> "<< str<<std::endl;
+    std::cout << "value of stringPTR ::> "<< *stringPTR << std::endl;
+    std::cout << "value of stringREF ::> "<< stringREF << std::endl;
+    
 }

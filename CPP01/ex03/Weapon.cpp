@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 04:40:38 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/25 21:19:05 by msaidi           ###   ########.fr       */
+/*   Created: 2024/01/26 01:18:43 by msaidi            #+#    #+#             */
+/*   Updated: 2024/01/26 04:15:27 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include <iostream>
 
-int main()
+Weapon::Weapon(std::string type)
 {
-    Zombie *malik = newZombie("malik");
-    malik->announce();
-    randomChump("halik");
-    delete malik;
-    return 0;
+    this->type = type;
+}
+
+const std::string& Weapon::getType()
+{
+    return type;
+}
+
+void Weapon::setType(std::string type)
+{
+    this->type = type;
 }

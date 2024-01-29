@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 04:40:42 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/25 02:04:13 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/01/28 17:58:56 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 Zombie* newZombie(std::string name)
 {
-    Zombie *bo3o = new Zombie(name);    
+    Zombie *bo3o = new Zombie(name);
     return bo3o;
 }

@@ -5,18 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 04:40:38 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/25 21:19:05 by msaidi           ###   ########.fr       */
+/*   Created: 2024/01/28 14:51:37 by msaidi            #+#    #+#             */
+/*   Updated: 2024/01/28 17:49:34 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <string>
+#include "Harl.hpp"
 
-int main()
+int main(int ac, char **av)
 {
-    Zombie *malik = newZombie("malik");
-    malik->announce();
-    randomChump("halik");
-    delete malik;
-    return 0;
+    Harl harl;
+    if (ac == 2)
+    {
+        std::string level = av[1];
+        harl.complain(level);
+        return 0;
+    }
+    std::cout << "Invalid argument" << std::endl;
+    
 }

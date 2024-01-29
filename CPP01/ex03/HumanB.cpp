@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 04:40:47 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/28 16:36:43 by msaidi           ###   ########.fr       */
+/*   Created: 2024/01/26 03:09:42 by msaidi            #+#    #+#             */
+/*   Updated: 2024/01/29 08:03:15 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
 #include <iostream>
+#include <ostream>
+#include <string>
+#include "HumanB.hpp"
 
-void Zombie::announce(void)
+HumanB::HumanB(std::string name): name(name), weapon(NULL)
+{}
+void HumanB::setWeapon(Weapon &arm)
 {
-    std::cout << name << ": BraiiiiiiinnnzzzZ..."<< std::endl;
+    this->weapon = &arm;
 }
 
-Zombie::Zombie(std::string name)
+void HumanB::attack()
 {
-    this->name = name;
+    if (weapon)
+        std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+    else
+     std::cout << name << " has no weapon" << std::endl;
 }
-
-Zombie::~Zombie()
+std::string HumanB::getWeapon()
 {
-    std::cout << this->name << ": tehla f rassek al batal" << std::endl;
+    return weapon->getType();
 }

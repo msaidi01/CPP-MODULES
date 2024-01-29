@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 04:40:38 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/25 01:59:44 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/01/25 23:31:14 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main()
 {
-    Zombie *malik = newZombie("malik");
-    malik->announce();
-    randomChump("halik");
-    delete malik;
-    return 0;
+    int n = 5;
+    Zombie *bo3o = zombieHorde(n, "7afozli9");
+    for (int i = 0; i < n; i++)
+        bo3o[i].announce();
+    delete[] bo3o;
 }
