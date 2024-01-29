@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:51:34 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/28 17:57:26 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:35:00 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void Harl::complain(std::string level)
         case 1:
             this->info();
         case 2:
-        this->warning();
+            this->warning();
         case 3:
             this->error();
             break ;
@@ -56,4 +56,3 @@ void Harl::complain(std::string level)
             std::cout << "complaining about something else"<< std::endl;
     }
 }
-
