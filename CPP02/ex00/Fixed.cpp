@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 10:36:53 by msaidi            #+#    #+#             */
-/*   Updated: 2024/01/31 18:26:01 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/01 17:55:28 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,3 @@ void Fixed::setRawBits( int const raw )
 {
     this->value = raw;
 }
-
