@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:01:34 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/02 18:12:48 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/02 18:25:53 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 Dog::Dog()
 {
 	std::cout << "Dog constructor called" << std::endl;
+    this->type = "Dog";
 }
 
 Dog::Dog(Dog &ob)
@@ -40,12 +41,12 @@ Dog::~Dog()
 	std::cout << "Dog destructor called" << std::endl;
 }
 
-void Dog::setType(std::string type)
-{
-    this->type = type;
-}
-
 std::string Dog::getType()
 {
     return this->type;
+}
+
+void Dog::makeSound()
+{
+    std::cout << "Wouf wouf" << std::endl;
 }

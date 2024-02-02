@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:45:58 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/02 17:59:22 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/02 18:30:00 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,9 @@ Animal& Animal::operator=(Animal &ob)
 Animal::~Animal()
 {
 	std::cout << "Animal destructor called" << std::endl;
+}
+
+void Animal::makeSound()
+{
+	std::cout << "Animal sound" << std::endl;
 }

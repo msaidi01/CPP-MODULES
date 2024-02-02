@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:00:10 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/02 18:11:49 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/02 18:26:11 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ class Cat : public Animal
     Cat(Cat &ob);
     Cat& operator=(Cat &ob);
 
-    void setType(std::string type);
     std::string getType();
+
+    void makeSound();
     
     ~Cat();
 

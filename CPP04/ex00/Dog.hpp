@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:01:12 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/02 18:12:39 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/02 18:25:46 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ class Dog : public Animal
     Dog& operator=(Dog &ob);
     ~Dog();
 
-    
-    void setType(std::string type);
     std::string getType();
+    
+    void makeSound();
     
     
 };

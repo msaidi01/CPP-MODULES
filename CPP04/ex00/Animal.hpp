@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:34:39 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/02 17:52:43 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/02 18:50:26 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Animal
     Animal(Animal &ob);
     Animal& operator=(Animal &ob);
     ~Animal();
-
+    void makeSound();
     
 };
 
