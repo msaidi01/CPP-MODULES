@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:13:06 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/02 11:32:38 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/02 12:46:37 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& ob)
 
     return *this;
 }
-
+  
 ClapTrap::~ClapTrap()
 {
     std::cout << "ClapTrap destructed"<<std::endl;
