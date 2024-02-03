@@ -1,51 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 17:45:58 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/03 11:37:48 by msaidi           ###   ########.fr       */
+/*   Created: 2024/02/03 13:30:10 by msaidi            #+#    #+#             */
+/*   Updated: 2024/02/03 13:30:24 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 #include <iostream>
 
-Animal::Animal()
+WrongAnimal::WrongAnimal()
 {
-	std::cout << "Animal constructor called" << std::endl;
+	std::cout << "WrongAnimal constructor called" << std::endl;
 }
 
-Animal::Animal(Animal &ob)
+WrongAnimal::WrongAnimal(WrongAnimal &ob)
 {
-	std::cout << "Animal copy constructor called" << std::endl;
+	std::cout << "WrongAnimal copy constructor called" << std::endl;
 	if (this != &ob) {
 		*this = ob;
 	}
 }
 
-Animal& Animal::operator=(Animal &ob)
+WrongAnimal& WrongAnimal::operator=(WrongAnimal &ob)
 {
-	std::cout << "Animal assignation operator called" << std::endl;
+	std::cout << "WrongAnimal assignation operator called" << std::endl;
 	if (this != &ob) {
 		this->type = ob.type;
 	}
 	return *this;
 }
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << "Animal destructor called" << std::endl;
+	std::cout << "WrongAnimal destructor called" << std::endl;
 }
 
-void Animal::makeSound() const
+void WrongAnimal::makeSound() const
 {
-	std::cout << "Animal sound" << std::endl;
+	std::cout << "WrongAnimal sound" << std::endl;
 }
 
-std::string Animal::getType() const
+std::string WrongAnimal::getType() const
 {
 	return this->type;
 }

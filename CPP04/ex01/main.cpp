@@ -6,38 +6,49 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:34:00 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/03 13:51:39 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/03 19:47:45 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
-#include <iostream>
+#include "Brain.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
+
 int main()
 {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    const Animal* j[8];
 
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
+    Dog max;
+    Cat leo;
+    Brain m;
+    Brain c;
+
+    m.setIdeas("jump");
+    c.setIdeas("sleep");
     
-    std::cout << "--------------------------------------" << std::endl;
-
-    const WrongAnimal* a = new WrongAnimal();
-    const WrongAnimal* b = new WrongCat();
+    max.setBrain(m);
+    leo.setBrain(c);
+    leo.getBrain().printIdeas();
+    max.getBrain().printIdeas();
+    m.setIdeas("sleep");
+    c.setIdeas("eat");
+    max.getBrain().printIdeas();
+    leo.getBrain().printIdeas();
     
-    std::cout << a->getType() << " dd" << std::endl;
-    std::cout << b->getType() << " " << std::endl;
-    b->makeSound(); //will output the WrongAnimal sound!
-    a->makeSound();
+    for (int i = 0; i < 8; i++)
+    {
+        if (i < 4)
+            j[i] = new Cat();
+        else
+        j[i] = new Dog();
+    }
 
-    return (delete meta, delete j, delete i, delete a, delete b, 0);
+    for (int i = 0; i < 8; i++)
+    {
+        j[i]->makeSound();
+        delete j[i];
+    }
+    return 0;
 }
