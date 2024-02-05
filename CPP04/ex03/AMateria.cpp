@@ -6,11 +6,12 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 20:28:19 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/03 20:33:44 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/05 12:28:16 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 #include <iostream>
 
 AMateria::AMateria()
@@ -41,8 +42,18 @@ AMateria& AMateria::operator=(AMateria &ob)
     return *this;
 }
 
-
 AMateria::~AMateria()
 {
     std::cout << "AMateria destructor" << std::endl;
+    
+}
+
+std::string const & AMateria::getType() const 
+{
+    return this->type;
+}
+
+void AMateria::use(ICharacter& target)
+{
+    std::cout << "AMateria used as abstracted on " << target.getName() << std::endl;
 }

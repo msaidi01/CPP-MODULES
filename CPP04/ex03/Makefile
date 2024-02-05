@@ -1,8 +1,8 @@
 NAME = AMateria
 
-SRC	= main.cpp AMateria.cpp
+SRC	= main.cpp AMateria.cpp Ice.cpp  Cure.cpp Character.cpp MateriaSource.cpp
 
-HEADERS = AMateria.hpp
+HEADERS = AMateria.hpp Cure.hpp Ice.hpp Icharacter.hpp Character.hpp IMateriaSource.hpp MateriaSource.hpp 
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 
 

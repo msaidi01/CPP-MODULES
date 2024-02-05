@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 13:30:10 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/03 13:30:24 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/05 11:19:39 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 WrongAnimal::WrongAnimal()
 {
 	std::cout << "WrongAnimal constructor called" << std::endl;
+	this->type = "WrongAnimal";
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal &ob)

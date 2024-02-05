@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:34:00 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/03 13:51:39 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/05 11:19:58 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main()
     const WrongAnimal* a = new WrongAnimal();
     const WrongAnimal* b = new WrongCat();
     
-    std::cout << a->getType() << " dd" << std::endl;
+    std::cout << a->getType() << " " << std::endl;
     std::cout << b->getType() << " " << std::endl;
     b->makeSound(); //will output the WrongAnimal sound!
     a->makeSound();
