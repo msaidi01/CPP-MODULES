@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 14:57:35 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/05 12:44:52 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/05 13:52:23 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-    if (idx > 3)
+    if (idx > 3 || idx < 0)
     {
         std::cout << "Invalid Index" << std::endl;
         return ;
