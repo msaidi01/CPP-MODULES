@@ -1,6 +1,8 @@
-NAME = megaphone
+NAME = Bureaucrat
 
-SRC	= megaphone.cpp
+SRC	= main.cpp Bureaucrat.cpp
+
+HEADER = Bureaucrat.hpp
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -10,7 +12,7 @@ RM 	 = rm -rf
 
 OBJS = $(SRC:.cpp=.o)
 
-%.o : %.cpp 
+%.o : %.cpp $(HEADER)
 	$(CC) $(CPPFLAGS) -c -o $@ $<
 
 all	: $(NAME)
