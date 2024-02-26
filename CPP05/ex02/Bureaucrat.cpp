@@ -6,12 +6,14 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:51:05 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/23 17:36:29 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/26 11:20:03 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
+#include <exception>
 #include <string>
 #include <iostream>
 
@@ -84,4 +86,22 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return "Grade is too High";	
+}
+
+void Bureaucrat::signForm(AForm &ob)
+{
+	try 
+	{
+		if (ob.getSigne() == true)
+		{
+			std::cout << this->getName() << " couldn't sign " << ob.getName() << " because it was already signed." << std::endl;
+			return ;
+		}
+		ob.beSigned(*this);
+		std::cout << this->getName() << " signed " << ob.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->getName() << " couldn't sign " << ob.getName() << " because " << e.what() << std::endl;
+	}
 }

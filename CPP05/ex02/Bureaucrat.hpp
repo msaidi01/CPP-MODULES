@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:50:59 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/23 16:50:41 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/26 11:20:40 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <ostream>
 #include <string>
 #include <exception>
+
+class AForm;
 
 class Bureaucrat
 {
@@ -41,6 +43,7 @@ class Bureaucrat
 	int getGrade() const;
 	void incGrade();
 	void decGrade();
+	void signForm(AForm &ob);
 	
 };
 

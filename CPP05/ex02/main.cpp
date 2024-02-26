@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:50:54 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/23 19:10:12 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/26 12:05:28 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 #include <exception>
 #include <iostream>
 
+#include "ShrubberyCreationForm.hpp"
+
 int main()
 {
-    Bureaucrat a;
-
-    std::cout << a << std::endl;
-
+    Bureaucrat b("amine", 1);
+    
+    
+    std::cout << "-------------------------" << std::endl;
     try
     {
-        Bureaucrat b("mrda", 50);
-        b.incGrade();
-        b.incGrade();
-        b.incGrade();
-        std::cout << b << std::endl;
-        std::cout << a << std::endl;
-        a.decGrade();
+        ShrubberyCreationForm f("test");
+        b.signForm(f);
+        f.execute(b);
+        
     }
     catch (std::exception &e)
     {
