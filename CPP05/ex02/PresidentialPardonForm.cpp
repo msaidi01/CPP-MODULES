@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 11:50:37 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/26 12:09:55 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/26 18:43:19 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
     if (executor.getGrade() > this->getGradeToExecute())
         throw AForm::GradeTooLowException();
     if (!this->getSigne())
-        
+    {
+        std::cout << "Form isn't signed !" << std::endl;
+        return ;
+    }
     std::cout << this->_target << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }

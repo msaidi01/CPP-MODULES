@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:51:05 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/26 11:20:03 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/02/27 15:49:31 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,15 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::incGrade()
 {
-	this->grade--;
-	if (this->grade < 1)
+	if (this->grade == 1)
 		throw GradeTooHighException();
+	this->grade--;
 }
 void Bureaucrat::decGrade()
 {
-	this->grade++;
-	if (this->grade > 150)
+	if (this->grade == 150)
 		throw GradeTooLowException();
+	this->grade++;
 	
 }
 
