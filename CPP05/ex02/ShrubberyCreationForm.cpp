@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 18:43:32 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/26 11:47:37 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/01 09:16:42 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
     if (executor.getGrade() > this->getGradeToExecute())
         throw AForm::GradeTooLowException();
+    if (!this->getSigne())
+    {
+        throw AForm::notSignedException();
+    }
     std::string nameFile = this->target + "_shrubbery";
     std::ofstream file; file.open(nameFile);
     if (!file.is_open() || file.bad() || file.fail())

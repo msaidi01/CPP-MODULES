@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:59:45 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/28 01:52:51 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/01 09:15:30 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
         throw AForm::GradeTooLowException();
     if (!this->getSigne())
     {
-        std::cout << this->_target << " isn't signed!" << std::endl;
-        return ;
+        throw AForm::notSignedException();
     }
     std::cout << "VRRR ! VRRRR! VRR!" << std::endl;
     std::srand((unsigned int) std::time(NULL));

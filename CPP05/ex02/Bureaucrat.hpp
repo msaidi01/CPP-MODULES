@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:50:59 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/26 11:20:40 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/01 09:26:16 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ class Bureaucrat
 	void incGrade();
 	void decGrade();
 	void signForm(AForm &ob);
+	void executeForm(AForm const & form);
 	
 };
 

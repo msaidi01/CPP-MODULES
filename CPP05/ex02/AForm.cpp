@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:10:30 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/26 12:04:00 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/01 09:25:13 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ const char* AForm::GradeTooLowException::what() const throw()
 {
     return "Grade too low";
 }
+const char* AForm::notSignedException::what() const throw()
+{
+    return "AForm not signed";
+}
 
 std::ostream& operator<<(std::ostream& os, const AForm& a)
 {
@@ -79,7 +83,7 @@ std::ostream& operator<<(std::ostream& os, const AForm& a)
     return os;
 }
 
-void AForm::beSigned(Bureaucrat &ob)
+void AForm::beSigned(Bureaucrat const &ob)
 {
     if (ob.getGrade() <= this->_gradeToSigne)
         this->_signe = true;

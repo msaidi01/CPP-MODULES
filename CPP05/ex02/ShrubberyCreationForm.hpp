@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 18:37:19 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/26 11:55:43 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/01 09:02:50 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ class ShrubberyCreationForm : public AForm
     ShrubberyCreationForm& operator=(ShrubberyCreationForm &ob);
     ~ShrubberyCreationForm();
     class FileException : public std::exception
+    {
+        const char* what() const throw();
+    };
+    class notSignedException : std::exception
     {
         const char* what() const throw();
     };

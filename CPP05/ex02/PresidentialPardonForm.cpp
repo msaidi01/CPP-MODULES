@@ -6,13 +6,16 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 11:50:37 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/27 19:15:30 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/01 09:15:17 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 #include "AForm.hpp"
 #include <iostream>
+
+PresidentialPardonForm::PresidentialPardonForm(): AForm("Pardon", 25, 5), _target("Pardon")
+{}
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target)
 {}
@@ -40,8 +43,7 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
         throw AForm::GradeTooLowException();
     if (!this->getSigne())
     {
-        std::cout << "Form isn't signed !" << std::endl;
-        return ;
+        throw AForm::notSignedException();
     }
     std::cout << this->_target << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
