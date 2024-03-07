@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:59:45 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/01 09:15:30 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/07 01:14:26 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
         throw AForm::notSignedException();
     }
     std::cout << "VRRR ! VRRRR! VRR!" << std::endl;
-    std::srand((unsigned int) std::time(NULL));
+    std::srand(std::time(NULL));
     unsigned int random = std::rand();
     if (random % 2 == 0)
         std::cout << this->_target << " has been robotomized successfully !" << std::endl;
