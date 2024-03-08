@@ -6,15 +6,17 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:12:26 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/07 00:58:37 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/09 00:42:52 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <cctype>
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
+#include <limits>
 
 bool isChar(std::string toConvert)
 {
@@ -40,6 +42,10 @@ bool ft_isdigit(std::string str)
 	{
 		if (!std::isdigit(str[i]) && str[i] != '.')
 			return false;
+		if (str[i] == '.')
+		{
+			
+		}
 	}
 	if ((isdigit(str[str.length() - 2]) && str[str.length() - 1] == 'f')|| isdigit(str[str.length() - 1]))
 		return true;
@@ -95,14 +101,28 @@ void ScalarConverter::Convert(std::string toConvert)
 			std::cout << "Char : " << static_cast<char>(converted) << std::endl;
 		else
 			std::cout << "Char : " <<  "Non displayable" << std::endl;        
-		std::cout << "int : " <<  static_cast<int>(converted) << std::endl;
-		if (toConvert.length() == 'f')
-			std::cout << "float : " <<  static_cast<float>(converted) << std::endl;
+		if (converted < std::numeric_limits<int>::lowest() || converted > std::numeric_limits<int>::max())
+			std::cout << "int : " <<  "Impossible" << std::endl;
 		else
-			std::cout << "float : " <<  static_cast<float>(converted) << "f" << std::endl;
+			std::cout << "int : " <<  static_cast<int>(converted) << std::endl;
+
 		
-			  
+		
+		if ((toConvert.find('.') != std::string::npos && toConvert[toConvert.find('.') + 2]) ||  toConvert[toConvert.find('.') + 1] != '0')
+			std::cout << "float : " <<  static_cast<float>(converted) << "f" << std::endl;
+		else if (toConvert.find('.') != std::string::npos)
+			std::cout << "float : " <<  static_cast<float>(converted) << ".0f" << std::endl;
+		else
+			std::cout << "float : " <<  static_cast<float>(converted) << ".0f" << std::endl;
+		
+		
+		
+		if ((toConvert.find('.') != std::string::npos && toConvert[toConvert.find('.') + 2]) ||  toConvert[toConvert.find('.') + 1] != '0')
+			std::cout << "double : " << (converted) << std::endl;  
+		else
+			std::cout << "double : " << (converted) << ".0" << std::endl;
 	}
 	else
 		std::cout << "Error : Invalid input" << std::endl;
 }
+ 
