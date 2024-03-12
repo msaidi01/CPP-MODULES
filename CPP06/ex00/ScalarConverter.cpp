@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:12:26 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/09 00:42:52 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/12 15:29:49 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ bool ft_isdigit(std::string str)
 	{
 		if (!std::isdigit(str[i]) && str[i] != '.')
 			return false;
-		if (str[i] == '.')
-		{
-			
-		}
 	}
 	if ((isdigit(str[str.length() - 2]) && str[str.length() - 1] == 'f')|| isdigit(str[str.length() - 1]))
 		return true;
@@ -60,20 +56,30 @@ bool pseudoLiterals(std::string toConvert)
 		std::cout << "int : " << "impossible" << std::endl;
 		std::cout << "float : " << "nanf" << std::endl;
 		std::cout << "double : " << "nan" << std::endl;
-		return true;
+		return false;
 	}
 	if (toConvert == "+inf" || toConvert == "+inff" || toConvert == "inf" || toConvert == "inff"
 		|| toConvert == "-inf" || toConvert == "-inff")
-	{
-		std::cout << "Char : " << "impossible" << std::endl;
-		std::cout << "int : " << "impossible" << std::endl;
-		std::cout << "float : " << toConvert << std::endl;
-		std::cout << "double : " << toConvert << std::endl;
 		return true;
-	}
 	return false;
 }
 
+void printPseudo(std::string toConvert)
+{
+	std::string pseudo[] = {"+inf", "-inf", "inff", "+inff", "-inff", "inff"};
+	int i = 0;
+	while (i < 7)
+	{
+		if (toConvert == pseudo[i])
+			break;
+		i++;
+	}
+	switch (i)
+	{
+		std::cout << "Char : " << "impossible" << std::endl;
+		std::cout << "int : " << "impossible" << std::endl;
+	}
+}
 
 void ScalarConverter::Convert(std::string toConvert)
 {
@@ -93,7 +99,9 @@ void ScalarConverter::Convert(std::string toConvert)
 		std::cout << "double : " <<  static_cast<double>(toConvert[1]) << ".0" << std::endl;
 	}
 	else if (pseudoLiterals(toConvert))
-		return ;
+	{
+		printPseudo(toConvert);
+	}
 	else if (ft_isdigit(toConvert))
 	{
 		double converted = atof(toConvert.c_str());
@@ -105,22 +113,17 @@ void ScalarConverter::Convert(std::string toConvert)
 			std::cout << "int : " <<  "Impossible" << std::endl;
 		else
 			std::cout << "int : " <<  static_cast<int>(converted) << std::endl;
-
-		
-		
-		if ((toConvert.find('.') != std::string::npos && toConvert[toConvert.find('.') + 2]) ||  toConvert[toConvert.find('.') + 1] != '0')
-			std::cout << "float : " <<  static_cast<float>(converted) << "f" << std::endl;
-		else if (toConvert.find('.') != std::string::npos)
-			std::cout << "float : " <<  static_cast<float>(converted) << ".0f" << std::endl;
-		else
-			std::cout << "float : " <<  static_cast<float>(converted) << ".0f" << std::endl;
-		
-		
-		
-		if ((toConvert.find('.') != std::string::npos && toConvert[toConvert.find('.') + 2]) ||  toConvert[toConvert.find('.') + 1] != '0')
-			std::cout << "double : " << (converted) << std::endl;  
-		else
+		double test = floor(converted);
+		if (converted == test)
+		{
+			std::cout << "float : " << static_cast<float>(converted) << ".0f" << std::endl;
 			std::cout << "double : " << (converted) << ".0" << std::endl;
+		}
+		else
+		{
+			std::cout << "float : " << static_cast<float>(converted) << "f" << std::endl;
+			std::cout << "double : " << (converted) << std::endl;
+		}
 	}
 	else
 		std::cout << "Error : Invalid input" << std::endl;

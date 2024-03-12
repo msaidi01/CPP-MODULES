@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 02:07:19 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/06 06:36:19 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/08 23:19:49 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "C.hpp"
 #include <cstdlib>
 #include <ctime>
-
 
 Base *generate(void)
 {
@@ -29,4 +28,3 @@ Base *generate(void)
     else
         return new C();
 }
-

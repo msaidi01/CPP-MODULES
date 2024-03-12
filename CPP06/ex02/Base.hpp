@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 02:07:40 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/06 02:08:44 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/11 15:47:05 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,8 @@ class Base
     public:
     virtual ~Base();   
 };
+
+
+Base *generate(void);
 
 #endif

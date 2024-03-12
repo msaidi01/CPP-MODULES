@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:50:54 by msaidi            #+#    #+#             */
-/*   Updated: 2024/02/25 15:26:37 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/08 19:59:59 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 
 int main()
 {
-    Bureaucrat b("amine", 1);
     Form f;
     
     std::cout << f << std::endl;
     std::cout << "-------------------------" << std::endl;
     try
     {
+        Bureaucrat b("amine", 1);
         Form d("certificat", 150, 15);
         std::cout << d << std::endl;
         std::cout << "-------------------------" << std::endl;

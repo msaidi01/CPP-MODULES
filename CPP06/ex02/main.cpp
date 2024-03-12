@@ -5,24 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 18:07:16 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/11 18:07:18 by msaidi           ###   ########.fr       */
+/*   Created: 2024/03/11 18:08:11 by msaidi            #+#    #+#             */
+/*   Updated: 2024/03/11 18:45:07 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "Serializer.hpp"
+#include "Base.hpp"
 #include <iostream>
+
+typedef struct cc 
+{
+    int A;
+    int B;
+    int C;  
+}cc_t;
 
 int main()
 {
-    Data *data = new Data;
-    data->randomStr = "Hello World!";
-    data->index = 42;
-    uintptr_t raw = Serializer::serialize(data);
-    Data *data2 = Serializer::deserialize(raw);
-    std::cout << "data2->randomStr: " << data2->randomStr << std::endl;
-    std::cout << "data2->index: " << data2->index << std::endl;
-    delete data;
+    // Base *base = generate();
+    cc_t *A = new cc_t;
+    A->A = 1;
+    A->B = 2;
+    A->C = 3;
+    int *re = reinterpret_cast<int *>(A);
+    std::cout << re[0] << std::endl;
+    std::cout << re[1] << std::endl;
+    
+    
     return 0;
 }
