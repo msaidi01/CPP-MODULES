@@ -11,12 +11,9 @@
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include <cctype>
-#include <cmath>
-#include <cstdio>
-#include <cstdlib>
 #include <iostream>
 #include <limits>
+#include <cmath>
 
 bool isChar(std::string toConvert)
 {
@@ -109,12 +106,11 @@ void ScalarConverter::Convert(std::string toConvert)
 		std::cout << "double : " <<  static_cast<double>(toConvert[1]) << ".0" << std::endl;
 	}
 	else if (pseudoLiterals(toConvert))
-	{
 		printPseudo(toConvert);
-	}
 	else if (ft_isdigit(toConvert))
 	{
 		double converted = atof(toConvert.c_str());
+		
 		if (converted > 31 && converted < 127)
 			std::cout << "Char : " << static_cast<char>(converted) << std::endl;
 		else
@@ -123,7 +119,9 @@ void ScalarConverter::Convert(std::string toConvert)
 			std::cout << "int : " <<  "Impossible" << std::endl;
 		else
 			std::cout << "int : " <<  static_cast<int>(converted) << std::endl;
+		
 		double test = floor(converted);
+		
 		if (converted == test)
 		{
 			std::cout << "float : " << static_cast<float>(converted) << ".0f" << std::endl;
@@ -138,4 +136,3 @@ void ScalarConverter::Convert(std::string toConvert)
 	else
 		std::cout << "Error : Invalid input" << std::endl;
 }
- 
