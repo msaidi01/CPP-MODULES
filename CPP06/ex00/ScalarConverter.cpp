@@ -32,10 +32,10 @@ bool ft_isdigit(std::string str)
 
 	if (str[j] == '+' || str[j] == '-')
 		j++;
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 2 && found != std::string::npos; i++)
 	{
 		found = str.find(".", found + 1);
-		if (i > 1 || found == 0)
+		if (i >= 1 || found == 0)
 			return false;
 	}
 	for (int i = j; i < (int)str.length() - 1 ; i++)
@@ -50,34 +50,44 @@ bool ft_isdigit(std::string str)
 
 bool pseudoLiterals(std::string toConvert)
 {
-	if (toConvert == "nan" || toConvert == "nanf")
-	{
-		std::cout << "Char : " << "impossible" << std::endl;
-		std::cout << "int : " << "impossible" << std::endl;
-		std::cout << "float : " << "nanf" << std::endl;
-		std::cout << "double : " << "nan" << std::endl;
-		return false;
-	}
-	if (toConvert == "+inf" || toConvert == "+inff" || toConvert == "inf" || toConvert == "inff"
-		|| toConvert == "-inf" || toConvert == "-inff")
+	if (toConvert == "+inf" || toConvert == "+inff" || toConvert == "-inf"
+	|| toConvert == "-inff" || toConvert == "nan")
 		return true;
 	return false;
 }
 
 void printPseudo(std::string toConvert)
 {
-	std::string pseudo[] = {"+inf", "-inf", "inff", "+inff", "-inff", "inff"};
+	if (toConvert == "nan" || toConvert == "nanf")
+	{
+		std::cout << "Char : " << "impossible" << std::endl;
+		std::cout << "int : " << "impossible" << std::endl;
+		std::cout << "float : " << "nanf" << std::endl;
+		std::cout << "double : " << "nan" << std::endl;
+	}
+	std::string pseudo[] = {"+inf", "-inf", "+inff", "-inff"};
 	int i = 0;
-	while (i < 7)
+	while (i < 4)
 	{
 		if (toConvert == pseudo[i])
 			break;
 		i++;
 	}
-	switch (i)
+	if (i < 4)
 	{
-		std::cout << "Char : " << "impossible" << std::endl;
-		std::cout << "int : " << "impossible" << std::endl;
+		std::cout << "Char : " << "Impossible" << std::endl;
+		std::cout << "int : " << "Impossible" << std::endl;
+		if (i < 2)
+		{
+			std::cout << "float : " << pseudo[i] << "f" << std::endl;
+			std::cout << "double : " << pseudo[i] << std::endl;
+		}
+		else
+		{
+			std::cout << "float : " << pseudo[i] << std::endl;
+			pseudo[i].erase(pseudo[i].end() - 1);
+			std::cout << "double : " << pseudo[i] << std::endl;
+		}
 	}
 }
 
@@ -109,7 +119,7 @@ void ScalarConverter::Convert(std::string toConvert)
 			std::cout << "Char : " << static_cast<char>(converted) << std::endl;
 		else
 			std::cout << "Char : " <<  "Non displayable" << std::endl;        
-		if (converted < std::numeric_limits<int>::lowest() || converted > std::numeric_limits<int>::max())
+		if (converted < std::numeric_limits<int>::min() || converted > std::numeric_limits<int>::max())
 			std::cout << "int : " <<  "Impossible" << std::endl;
 		else
 			std::cout << "int : " <<  static_cast<int>(converted) << std::endl;
