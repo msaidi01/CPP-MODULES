@@ -6,11 +6,12 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:12:26 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/12 15:29:49 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/21 01:56:58 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <cstdio>
 #include <iostream>
 #include <limits>
 #include <cmath>
@@ -25,14 +26,16 @@ bool isChar(std::string toConvert)
 bool ft_isdigit(std::string str)
 {
 	int j = 0;
-	size_t found = 0;
+	size_t found = str.find(".");
 
+	if (found == 0)
+		return false;
 	if (str[j] == '+' || str[j] == '-')
 		j++;
 	for (int i = 0; i < 2 && found != std::string::npos; i++)
 	{
 		found = str.find(".", found + 1);
-		if (i >= 1 || found == 0)
+		if (i >= 1)
 			return false;
 	}
 	for (int i = j; i < (int)str.length() - 1 ; i++)
@@ -105,8 +108,9 @@ void ScalarConverter::Convert(std::string toConvert)
 		std::cout << "float : " <<  static_cast<float>(toConvert[1]) << ".0f" << std::endl;
 		std::cout << "double : " <<  static_cast<double>(toConvert[1]) << ".0" << std::endl;
 	}
-	else if (pseudoLiterals(toConvert))
+	else if (pseudoLiterals(toConvert)){
 		printPseudo(toConvert);
+	}
 	else if (ft_isdigit(toConvert))
 	{
 		double converted = atof(toConvert.c_str());
@@ -114,7 +118,7 @@ void ScalarConverter::Convert(std::string toConvert)
 		if (converted > 31 && converted < 127)
 			std::cout << "Char : " << static_cast<char>(converted) << std::endl;
 		else
-			std::cout << "Char : " <<  "Non displayable" << std::endl;        
+			std::cout << "Char : " <<  "Non displayable" << std::endl;
 		if (converted < std::numeric_limits<int>::min() || converted > std::numeric_limits<int>::max())
 			std::cout << "int : " <<  "Impossible" << std::endl;
 		else
