@@ -1,8 +1,8 @@
-NAME = Array
+NAME = easyfind
 
-SRC	= main.cpp
+SRC	= main.cpp easyfind.cpp
 
-HEADER = Array.hpp
+HEADER = easyfind.hpp
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 

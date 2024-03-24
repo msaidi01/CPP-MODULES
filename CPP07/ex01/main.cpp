@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 01:44:12 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/23 02:22:40 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/24 01:28:55 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class Awesome
 {
   public:
-    Awesome( void ) : _n( 43 ) { return; }
+    Awesome( void ) : _n( 42 ) { return; }
     int get( void ) const { return this->_n; }
   private:
     int _n;
