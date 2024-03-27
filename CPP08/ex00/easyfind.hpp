@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:08:42 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/25 23:20:29 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/27 02:25:48 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define EASYFIND_HPP
 
 #include <algorithm>
-#include <iterator>
 #include <stdexcept>
 
 template <typename T>
