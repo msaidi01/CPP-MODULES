@@ -1,8 +1,8 @@
-NAME = easyfind
+NAME = MutantStack
 
 SRC	= main.cpp
 
-HEADER = easyfind.hpp
+HEADER = MutantStack.hpp
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
