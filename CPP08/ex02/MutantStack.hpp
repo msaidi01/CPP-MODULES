@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 00:23:02 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/27 02:23:12 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/27 02:30:33 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ class MutantStack : public std::stack<T>
 			std::stack<T>::operator=(other);
 		return *this;
 	}
-
 	typedef typename container::iterator iterator;
 	iterator begin()
 	{
