@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 00:52:59 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/31 06:43:11 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/31 22:39:12 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ std::string RPN::getStr()
 
 bool isNumber(char str)
 {
-	if ((str > '0' && str < '9' )|| str == '-' || str == '+' || str == '*' || str == '/')
+	if ((str >= '0' && str <= '9' )|| str == '-' || str == '+' || str == '*' || str == '/')
 		return true;
 	return false;
 }
@@ -63,7 +63,7 @@ void RPN::parseCalculate()
 	{
 		if (str.size() != 1 || !isNumber(str[0]))
 		{
-			std::cout << "Error: invalid character" << std::endl;
+			std::cout << "Error: invalid number" << std::endl;
 			return;
 		}
 		if (str == "+" || str == "-" || str == "*" || str == "/")

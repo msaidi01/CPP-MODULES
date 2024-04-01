@@ -6,13 +6,15 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 09:17:54 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/31 09:37:29 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/04/01 04:38:44 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "PmergeMe.hpp"
 #include <cstdlib>
+#include <utility>
+#include <vector>
 
 bool CheckArg(char **av)
 {
@@ -28,6 +30,8 @@ bool CheckArg(char **av)
 	return true;
 }
 
+
+
 int main(int ac, char **av)
 {
     if (ac < 2 || !CheckArg(av))
@@ -35,4 +39,11 @@ int main(int ac, char **av)
         std::cout << "Invalid input." << std::endl;
         return 0;
     }
+	PmergeMe a;
+	std::vector<int> args;
+	for (int i = 1 ; av[i] ; i++){
+		args.push_back(atoi(av[i]));
+	}
+	a.createPairs(args);
+	
 }

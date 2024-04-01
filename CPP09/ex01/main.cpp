@@ -6,10 +6,11 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 00:52:57 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/31 05:38:26 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/03/31 22:38:39 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <algorithm>
 #include <iostream>
 #include "RPN.hpp"
 
@@ -25,4 +26,4 @@ int main(int ac, char **av)
 	rpn.parseCalculate();
 
 	return 0;
-}
+}	

@@ -6,7 +6,7 @@
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 03:53:01 by msaidi            #+#    #+#             */
-/*   Updated: 2024/03/31 00:44:04 by msaidi           ###   ########.fr       */
+/*   Updated: 2024/04/01 00:46:16 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <map>
 #include <string>
-#include <sstream>
 
 BitcoinExchange::BitcoinExchange()
 {}
@@ -125,27 +124,42 @@ bool checkYear(std::string date)
 	int _month = std::atoi(date.substr(5, 2).c_str());
 	int _day = std::atoi(date.substr(8, 2).c_str());
 	
-	 if (_year < 2009|| _year > 2023 || _month < 1 || _month > 12 || _day < 1 || _day > 31)
+	 if (_year < 2009 || _month < 1 || _month > 12 || _day < 1 || _day > 31)
         return false;
 	if (_month == 2 && _day > 28 && !(((_year % 4 == 0) && (_year % 100 != 0)) || _year % 400 == 0))
 		return false;
-
 	int max_day[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	if (_day > max_day[_month - 1])
+		return false;
+	if (_year == 2009 && _month == 1 && _day < 2)
 		return false;
 	return true;
 }
 
 bool checkVal(std::string value)
 {
-	std::istringstream iss(value);
-	double v;
-	
-	iss >> v;
-	if (iss.eof()){
-		return true;
+	// std::istringstream iss(value);
+	int comma = 0;
+	for (int i = 0; i < (int)value.size(); i++){
+		if ( value[i] == '.')
+		{
+			comma++;
+			continue;
+		}
+		if (!isdigit(value[i]))
+			return false;
 	}
-	return false;
+	if (comma > 1)
+		return false;
+	double v = atof(value.c_str());
+	if (v < 0 || v > 1000){
+		return false;
+	}
+	
+	if (value.size() == 0 || value.find('.') == 0 || value.find('.') == value.size() - 1){
+		return false;
+	}
+	return true;
 }
 
 void BitcoinExchange::parseInput(std::string input)
@@ -170,6 +184,9 @@ void BitcoinExchange::parseInput(std::string input)
 	}
 	while (std::getline(InputFile, line))
 	{
+		if (line.empty()){
+			continue;
+		}
 		found = line.find(" | ");
 		try 
 		{
