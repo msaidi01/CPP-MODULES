@@ -1,90 +1,98 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*   vector.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaidi <msaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/31 09:17:57 by msaidi            #+#    #+#             */
-/*   Updated: 2024/04/02 06:57:45 by msaidi           ###   ########.fr       */
+/*   Created: 2024/04/02 04:34:53 by msaidi            #+#    #+#             */
+/*   Updated: 2024/04/02 06:56:20 by msaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp" 
+#include "PmergeMe.hpp"
 #include <algorithm>
 #include <cstddef>
 #include <cstdlib>
 #include <utility>
 #include <iostream>
+#include <vector>
 
-PmergeMedeq::PmergeMedeq(): strug(0)
+PmergeMevec::PmergeMevec(): time(0)
 {}
 
-PmergeMedeq::PmergeMedeq(const PmergeMedeq &ob)
+PmergeMevec::PmergeMevec(const PmergeMevec &ob)
 {
-    if (this != &ob)
-    {
+    if (this != &ob){
         *this = ob;
     }
 }
 
-PmergeMedeq::~PmergeMedeq()
-{}
-
-PmergeMedeq &PmergeMedeq::operator=(const PmergeMedeq &ob)
+PmergeMevec::~PmergeMevec()
 {
-    if (this != &ob)
+}
+
+PmergeMevec &PmergeMevec::operator=(const PmergeMevec &ob)
+{
+    if ( this != &ob)
     {
         this->strug = ob.strug;
-        this->deqSorted = ob.deqSorted;
+        this->vecSorted = ob.vecSorted;
+        this->time = ob.time;
     }
     return *this;
 }
 
-
-void PmergeMedeq::setStrug(int s)
+void PmergeMevec::setStrug(int s)
 {
     strug = s;
 }
 
-int PmergeMedeq::getStrug() const
+int PmergeMevec::getStrug() const
 {
     return strug;
 }
 
-std::deque<int> &PmergeMedeq::getDeqSorted()
+std::vector<int> &PmergeMevec::getVecSorted()
 {
-    return deqSorted;
+    return vecSorted;
 }
 
-void PmergeMedeq::setTime(double t)
+void PmergeMevec::setTime(double t)
 {
     time = t;
 }
 
-double PmergeMedeq::getTime()
+double PmergeMevec::getTime()
 {
     return time;
 }
 
-// deque
-
-std::deque<int> generateJacob(size_t size)
+void PmergeMevec::printVec()
 {
-    std::deque<int> jacob;
+    std::cout << "After  : ";
+    for (size_t i = 0; i < vecSorted.size(); i++){
+        std::cout << vecSorted[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+std::vector<int> generateJacobSeq(size_t size)
+{
+    std::vector<int> jacob;
     jacob.push_back(0);
     jacob.push_back(1);
     for (size_t i = 2; i < size; i++)
     {
-        if (jacob[i - 1] + 2 * jacob[i - 2] <= (int)size - 1)
+        if (jacob[i - 1] + 2 * jacob[i - 2] < (int)size - 1)
             jacob.push_back(jacob[i - 1] + 2 * jacob[i - 2]);
         else
-            break;
+            break   ;
     }
     return jacob;
 }
 
-bool findDeq(std::deque<int> &vec, int val)
+bool findVec(std::vector<int> &vec, int val)
 {
     for (size_t i = 0; i < vec.size(); i++)
     {
@@ -94,20 +102,20 @@ bool findDeq(std::deque<int> &vec, int val)
     return false;
 }
 
-std::deque<int> generateIndex(std::deque<int> &jacob, size_t size)
+std::vector<int> generateIndexSeq(std::vector<int> &jacob, size_t size)
 {
-    std::deque<int> index;
-    std::deque<int> res;
+    std::vector<int> index;
+    std::vector<int> res;
     
     for (size_t i = 0; i < size; i++){
         index.push_back(i);
     }
     
-    for (int i = 0; i < (int)jacob.size(); i++)
+    for (size_t i = 0; i < jacob.size(); i++)
     {
         for (int j = 0; j < (int)index.size(); j++)
         {
-            if(index[j] == jacob[i] && findDeq(res, index[j]) == false)
+            if(index[j] == jacob[i] && findVec(res, index[j]) == false)
             {
                 res.push_back(index[j]);
                 index[j] = -1;
@@ -131,7 +139,7 @@ std::deque<int> generateIndex(std::deque<int> &jacob, size_t size)
     return res;
 }
 
-static void merge(std::deque<std::pair<int, int> > &left, std::deque<std::pair<int, int> > &right,std::deque<std::pair<int, int> > &pairs)
+static void merge(std::vector<std::pair<int, int> > &left, std::vector<std::pair<int, int> > &right,std::vector<std::pair<int, int> > &pairs)
 {
     size_t l = 0;
     size_t r = 0;
@@ -166,15 +174,15 @@ static void merge(std::deque<std::pair<int, int> > &left, std::deque<std::pair<i
     
 }
 
-void PmergeMedeq::mergeSortdeq(std::deque<std::pair<int, int> > &pairs)
+void PmergeMevec::mergeSort(std::vector<std::pair<int, int> > &pairs)
 {
     size_t len = pairs.size();
      if (len <= 1)
         return;
 
     size_t mid = len / 2;
-    std::deque<std::pair<int, int> > left;
-    std::deque<std::pair<int, int> > right;
+    std::vector<std::pair<int, int> > left;
+    std::vector<std::pair<int, int> > right;
     for (size_t i = 0; i < mid; i++){
         left.push_back(pairs[i]);
         std::cout << "left: " << pairs[i].first << " " << pairs[i].second << std::endl;
@@ -183,18 +191,18 @@ void PmergeMedeq::mergeSortdeq(std::deque<std::pair<int, int> > &pairs)
         right.push_back(pairs[i]);
         std::cout << "right: " << pairs[i].first << " " << pairs[i].second << std::endl;
     }
-    mergeSortdeq(left);
-    mergeSortdeq(right);
+    mergeSort(left);
+    mergeSort(right);
     
     merge(left, right, pairs);
 
 }
 
 
-int PmergeMedeq::createPairsdeq(char **av)
+int PmergeMevec::createPairs(char **av)
 {
     clock_t start = clock();
-    std::deque<int> args;
+    std::vector<int> args;
     for (int i = 1; av[i]; i++){
         args.push_back(std::atoi(av[i]));
     }
@@ -202,6 +210,7 @@ int PmergeMedeq::createPairsdeq(char **av)
     {
         clock_t end = clock();
         setTime((double)(end - start) / CLOCKS_PER_SEC * 1000000);
+        std::cout << args[0] << std::endl;
         return 1;
     }
     bool zero = false;
@@ -214,7 +223,7 @@ int PmergeMedeq::createPairsdeq(char **av)
 	}
 
     std::pair<int, int> pr[args.size()];
-    std::deque<std::pair<int, int> > pairs; 
+    std::vector<std::pair<int, int> > pairs; 
     for (size_t i = 0; i < args.size(); i += 2)
     {
         pr[i].first = args[i];
@@ -224,10 +233,10 @@ int PmergeMedeq::createPairsdeq(char **av)
         pairs.push_back(pr[i]);
     
     }
-    mergeSortdeq(pairs);
+    mergeSort(pairs);
     
-    std::deque<int> main;
-    std::deque<int> pend;
+    std::vector<int> main;
+    std::vector<int> pend;
 
     for (size_t i = 0; i < pairs.size(); i++)
     {
@@ -235,14 +244,14 @@ int PmergeMedeq::createPairsdeq(char **av)
         pend.push_back(pairs[i].second);
     }
     
-    std::deque<int> jacob = generateJacob(pend.size());
-    std::deque<int> Index = generateIndex(jacob, pend.size());
+    std::vector<int> jacob = generateJacobSeq(pend.size());
+    std::vector<int> Index = generateIndexSeq(jacob, pend.size());
     
-    std::deque<int> new_pend;
+    std::vector<int> new_pend;
     for (size_t i = 0; i < Index.size(); i++){
         new_pend.push_back(pend[Index[i]]);   
     }
-    std::deque<int>::iterator it;
+    std::vector<int>::iterator it;
     for (size_t i = 0; i < new_pend.size(); i++){
         it = (std::lower_bound(main.begin(), main.end(), new_pend[i]));
         main.insert(it, new_pend[i]);
@@ -256,7 +265,7 @@ int PmergeMedeq::createPairsdeq(char **av)
         main.insert(it, 0);
     }
     for (size_t i = 0; i < main.size(); i++){
-        this->deqSorted.push_back(main[i]);
+        this->vecSorted.push_back(main[i]);
     }
     clock_t end = clock();
     setTime((double)(end - start) / CLOCKS_PER_SEC * 1000000);

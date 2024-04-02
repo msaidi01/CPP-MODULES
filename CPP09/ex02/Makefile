@@ -1,6 +1,6 @@
 NAME = PmergeMe
 
-SRC	= main.cpp PmergeMe.cpp
+SRC	= main.cpp PmergeMe.cpp vector.cpp
 
 HEADER = PmergeMe.hpp
 
